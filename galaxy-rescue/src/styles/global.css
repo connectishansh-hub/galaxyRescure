@@ -351,8 +351,6 @@ h1, h2, h3, h4 {
 .mb-8 { margin-bottom: 8px; }
 .mb-16 { margin-bottom: 16px; }
 .mb-24 { margin-bottom: 24px; }
-<<<<<<< HEAD
-=======
 
 
 /* ── Menu Video Background ── */
@@ -380,4 +378,3 @@ h1, h2, h3, h4 {
   background: radial-gradient(ellipse at center, rgba(3, 10, 35, 0.45) 0%, rgba(2, 8, 24, 0.8) 100%);
   pointer-events: none;
 }
->>>>>>> f9c578c9320c144fcadccbfbd0ec4cf385364989

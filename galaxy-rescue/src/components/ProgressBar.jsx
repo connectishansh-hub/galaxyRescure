@@ -7,11 +7,7 @@ import React from 'react';
 const STAGES = [
   { n: 1, label: 'Launch', emoji: '🚀' },
   { n: 2, label: 'Scan',   emoji: '🔭' },
-<<<<<<< HEAD
   { n: 3, label: 'Memory', emoji: '🔮' },
-=======
-  { n: 3, label: 'Attack', emoji: '👾' },
->>>>>>> f9c578c9320c144fcadccbfbd0ec4cf385364989
   { n: 4, label: 'Rescue', emoji: '🛸' },
   { n: 5, label: 'Done',   emoji: '🏆' },
 ];

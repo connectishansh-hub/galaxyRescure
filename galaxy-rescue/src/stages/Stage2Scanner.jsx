@@ -666,11 +666,7 @@ export default function Stage2Scanner({ onComplete, pushMessages, onScore, disab
             )}
             {phase === 'done' && (
               <button className="btn btn-green btn-large" onClick={onComplete} disabled={disabled}>
-<<<<<<< HEAD
                 PROCEED TO MEMORY MELTDOWN →
-=======
-                PROCEED TO ALIEN ATTACK →
->>>>>>> f9c578c9320c144fcadccbfbd0ec4cf385364989
               </button>
             )}
           </div>

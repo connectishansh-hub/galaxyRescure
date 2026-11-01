@@ -4,11 +4,7 @@
  */
 import React from 'react';
 
-<<<<<<< HEAD
 const STAGE_LABELS = ['', 'Mission Launch', 'Planet Scanner', 'Campus & Memory', 'Galaxy Rescue', 'Mission Complete'];
-=======
-const STAGE_LABELS = ['', 'Mission Launch', 'Planet Scanner', 'Alien Attack', 'Galaxy Rescue', 'Mission Complete'];
->>>>>>> f9c578c9320c144fcadccbfbd0ec4cf385364989
 
 export default function ScorePanel({ score, stage, playerName }) {
   return (

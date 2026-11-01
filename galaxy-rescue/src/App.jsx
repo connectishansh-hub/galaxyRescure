@@ -15,11 +15,7 @@ import RpaConsole from './components/RpaConsole';
 import WelcomeScreen from './stages/WelcomeScreen';
 import Stage1Launch from './stages/Stage1Launch';
 import Stage2Scanner from './stages/Stage2Scanner';
-<<<<<<< HEAD
 import Stage3MemoryMeltdown from './stages/Stage3MemoryMeltdown';
-=======
-import Stage3AlienAttack from './stages/Stage3AlienAttack';
->>>>>>> f9c578c9320c144fcadccbfbd0ec4cf385364989
 import Stage4GalaxyRescue from './stages/Stage4GalaxyRescue';
 import Stage5Results from './stages/Stage5Results';
 
@@ -162,11 +158,7 @@ export default function App() {
                 />
               )}
               {stage === 3 && (
-<<<<<<< HEAD
                 <Stage3MemoryMeltdown
-=======
-                <Stage3AlienAttack
->>>>>>> f9c578c9320c144fcadccbfbd0ec4cf385364989
                   onComplete={advanceStage}
                   pushMessages={pushMessages}
                   onScore={addScore}

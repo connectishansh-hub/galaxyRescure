@@ -59,7 +59,6 @@ export const DANGER_THRESHOLDS = { oxygen: 35, energy: 25, shield: 30 };
 // Correct answer: planet IDs that are in danger
 export const DANGER_ANSWER_KEY = PLANETS.filter(p => p.inDanger).map(p => p.id);
 
-<<<<<<< HEAD
 // ── Stage 3: Memory Meltdown Configuration ──────────────────────────────
 export const MEMORY_BALLS = [
   { id: 'blue',   name: 'Blue',   color: '#00d0ff', glow: 'rgba(0, 208, 255, 0.85)', emoji: '🔵' },
@@ -119,9 +118,6 @@ export const CAMPUS_QUESTIONS = [
 ];
 
 // ── Stage 3 (Legacy): Alien attack puzzle pool ───────────────────────────
-=======
-// ── Stage 3: Alien attack puzzle pool ─────────────────────────────────────
->>>>>>> f9c578c9320c144fcadccbfbd0ec4cf385364989
 export const PUZZLES = [
   {
     id: 'puzzle1',
@@ -188,13 +184,9 @@ export const PLANET_RESCUE_REQUIREMENTS = {
 // ── Scoring ──────────────────────────────────────────────────────────────
 export const SCORE_VALUES = {
   STAGE2_CORRECT_PLANET: 100,   // per correctly identified danger planet
-<<<<<<< HEAD
   STAGE3_CORRECT_ANSWER: 200,   // stage 3 total (50 + 50 + 100)
   STAGE3_TRIVIA_POINTS: 50,     // per campus trivia question
   STAGE3_BALL_GAME_POINTS: 100, // for completing the memory meltdown ball game
-=======
-  STAGE3_CORRECT_ANSWER: 200,   // puzzle correct
->>>>>>> f9c578c9320c144fcadccbfbd0ec4cf385364989
   STAGE4_PLANET_SAVED: 150,     // per planet saved
   SPEED_BONUS_THRESHOLD: 240,   // seconds remaining for speed bonus
   SPEED_BONUS: 100,
@@ -227,7 +219,6 @@ export const RPA_MESSAGES = {
     { text: 'Verifying operator selection...', status: 'RUNNING' },
     { text: 'RPA validation complete.', status: 'COMPLETED' },
   ],
-<<<<<<< HEAD
   stage3_trivia: [
     { text: 'Accessing Campus Intel neural database...', status: 'RUNNING' },
     { text: 'Cross-referencing commander response with campus lore...', status: 'RUNNING' },
@@ -240,15 +231,6 @@ export const RPA_MESSAGES = {
     { text: 'Analyzing input sequence against core matrix...', status: 'RUNNING' },
     { text: 'Stabilizing planetary shield frequency...', status: 'RUNNING' },
     { text: 'Memory verification protocol complete.', status: 'COMPLETED' },
-=======
-  stage3: [
-    { text: 'ALERT: Alien fleet detected on radar!', status: 'RUNNING' },
-    { text: 'Deploying counter-intelligence protocols...', status: 'RUNNING' },
-    { text: 'Generating cryptographic challenge...', status: 'RUNNING' },
-    { text: 'Verifying operator response...', status: 'RUNNING' },
-    { text: 'Cross-checking with mission database...', status: 'RUNNING' },
-    { text: 'Response validation complete.', status: 'COMPLETED' },
->>>>>>> f9c578c9320c144fcadccbfbd0ec4cf385364989
   ],
   stage4: [
     { text: 'Accessing resource depot inventory...', status: 'RUNNING' },
