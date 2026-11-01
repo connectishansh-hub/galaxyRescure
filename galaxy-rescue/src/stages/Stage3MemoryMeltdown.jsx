@@ -300,8 +300,10 @@ export default function Stage3MemoryMeltdown({ onComplete, pushMessages, onScore
     <div className="animate-fadeIn">
       {/* ── Level Stepper Header (No Emojis) ── */}
       <div style={{ textAlign: 'center', marginBottom: 20 }}>
-        <h2 className="neon-purple" style={{ fontSize: '1.45rem', letterSpacing: '0.1em', marginBottom: 8 }}>
-          STAGE 3 — CAMPUS INTEL AND MEMORY MELTDOWN
+        <h2 className="heading-stage heading-stage3" style={{ fontSize: 'clamp(1.4rem, 3.8vw, 2.1rem)' }}>
+          <span className="heading-prefix">STAGE 3</span>
+          <span className="heading-sep"> — </span>
+          <span className="heading-title">CAMPUS INTEL & MEMORY MELTDOWN</span>
         </h2>
 
         {/* 3-Step Level Pill Indicators */}

@@ -88,36 +88,37 @@ export default function WelcomeScreen({ onStart }) {
               margin: '0 auto',
               objectFit: 'contain',
               mixBlendMode: 'screen',
-              filter: 'drop-shadow(0 0 22px rgba(0, 245, 255, 0.45))',
+              filter: 'drop-shadow(0 0 22px rgba(6, 190, 225, 0.5))',
             }}
           />
         </div>
 
-        {/* Subtitle */}
-        <div
+        {/* Main Heading / Subtitle with attached palette colors */}
+        <h2
+          className="heading-welcome"
           style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: 'clamp(0.9rem, 2.5vw, 1.2rem)',
-            color: 'var(--neon-cyan)',
-            letterSpacing: '0.2em',
+            fontSize: 'clamp(1.1rem, 3vw, 1.8rem)',
             marginBottom: 32,
-            textShadow: '0 0 12px var(--neon-cyan)',
+            textTransform: 'uppercase',
           }}
         >
-          RPA MISSION — SAVE THE GALAXY IN 5 MINUTES!
-        </div>
+          <span className="part-1">RPA MISSION</span>
+          <span className="part-sep"> — </span>
+          <span className="part-2">SAVE THE GALAXY</span>{' '}
+          <span className="part-3">IN 5 MINUTES!</span>
+        </h2>
 
         {/* Mission briefing */}
         <div
           className="card"
           style={{ maxWidth: 680, width: '100%', marginBottom: 32, textAlign: 'left', animation: 'fadeIn 0.6s ease 0.2s both' }}
         >
-          <div style={{ fontFamily: 'var(--font-display)', fontSize: '0.75rem', color: 'var(--neon-purple)', letterSpacing: '0.15em', marginBottom: 16 }}>
+          <div style={{ fontFamily: 'var(--font-display)', fontSize: '0.85rem', color: 'var(--pal-sky)', letterSpacing: '0.15em', marginBottom: 16, textShadow: '0 0 10px var(--pal-sky)' }}>
             📋 MISSION BRIEFING
           </div>
           <div style={{ color: 'var(--text-secondary)', lineHeight: 1.7, fontSize: '0.95rem' }}>
             Three planets in the Cygnus Sector are under threat. You have been selected as commander of{' '}
-            <span className="neon-cyan">Galaxy Bot</span>, an AI-powered RPA (Robotic Process Automation) system.
+            <span className="pal-sky" style={{ fontWeight: 'bold' }}>Galaxy Bot</span>, an AI-powered RPA (Robotic Process Automation) system.
           </div>
           <div style={{ marginTop: 16, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 12 }}>
             {[
@@ -126,23 +127,23 @@ export default function WelcomeScreen({ onStart }) {
               { icon: '🔮', title: 'Stage 3', desc: 'Campus Intel & Memory Meltdown' },
               { icon: '🛸', title: 'Stage 4', desc: 'Galaxy Rescue — allocate resources' },
             ].map(s => (
-              <div key={s.title} style={{ display: 'flex', gap: 10, alignItems: 'flex-start', padding: '10px 12px', borderRadius: 8, background: 'rgba(77,166,255,0.05)', border: '1px solid rgba(77,166,255,0.1)' }}>
+              <div key={s.title} style={{ display: 'flex', gap: 10, alignItems: 'flex-start', padding: '10px 12px', borderRadius: 8, background: 'rgba(23,104,172,0.12)', border: '1px solid rgba(6,190,225,0.25)' }}>
                 <span style={{ fontSize: '1.4rem' }}>{s.icon}</span>
                 <div>
-                  <div style={{ fontFamily: 'var(--font-display)', fontSize: '0.72rem', color: 'var(--neon-cyan)', marginBottom: 2 }}>{s.title}</div>
+                  <div style={{ fontFamily: 'var(--font-display)', fontSize: '0.8rem', color: 'var(--pal-sky)', marginBottom: 2 }}>{s.title}</div>
                   <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>{s.desc}</div>
                 </div>
               </div>
             ))}
           </div>
-          <div style={{ marginTop: 16, fontSize: '0.82rem', color: 'var(--neon-yellow)', display: 'flex', alignItems: 'center', gap: 8 }}>
+          <div style={{ marginTop: 16, fontSize: '0.85rem', color: 'var(--neon-yellow)', display: 'flex', alignItems: 'center', gap: 8 }}>
             ⏱ Timer starts when you click START MISSION. You have <strong>5 minutes</strong>.
           </div>
         </div>
 
         {/* Name input */}
         <div style={{ width: '100%', maxWidth: 420, animation: 'fadeIn 0.6s ease 0.4s both' }}>
-          <label style={{ display: 'block', fontFamily: 'var(--font-display)', fontSize: '0.7rem', color: 'var(--neon-cyan)', letterSpacing: '0.15em', marginBottom: 8 }}>
+          <label style={{ display: 'block', fontFamily: 'var(--font-display)', fontSize: '0.8rem', color: 'var(--pal-sky)', letterSpacing: '0.15em', marginBottom: 8, textShadow: '0 0 8px var(--pal-sky)' }}>
             ENTER COMMANDER NAME
           </label>
           <input
@@ -169,7 +170,7 @@ export default function WelcomeScreen({ onStart }) {
         </div>
 
         {/* Footer note */}
-        <div style={{ marginTop: 40, fontSize: '0.72rem', color: 'var(--text-dim)', animation: 'fadeIn 0.6s ease 0.6s both' }}>
+        <div style={{ marginTop: 40, fontSize: '0.75rem', color: 'var(--text-dim)', animation: 'fadeIn 0.6s ease 0.6s both' }}>
           Built for college event stalls · Powered by RPA simulation · No internet required
         </div>
       </div>

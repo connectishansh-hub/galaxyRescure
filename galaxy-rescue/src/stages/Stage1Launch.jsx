@@ -24,12 +24,14 @@ export default function Stage1Launch({ onComplete, pushMessages, disabled }) {
       {/* Stage header */}
       <div style={{ textAlign: 'center', marginBottom: 32 }}>
         <div style={{ fontSize: '2.5rem', marginBottom: 8 }}>🚀</div>
-        <h2 className="neon-cyan" style={{ fontSize: '1.5rem', letterSpacing: '0.1em', marginBottom: 8 }}>
-          STAGE 1 — MISSION LAUNCH
+        <h2 className="heading-stage heading-stage1" style={{ fontSize: 'clamp(1.5rem, 4vw, 2.2rem)' }}>
+          <span className="heading-prefix">STAGE 1</span>
+          <span className="heading-sep"> — </span>
+          <span className="heading-title">MISSION LAUNCH</span>
         </h2>
         <p style={{ color: 'var(--text-secondary)', maxWidth: 500, margin: '0 auto', lineHeight: 1.6 }}>
           The Galaxy Bot will assign rescue tasks to each planet. Click{' '}
-          <strong style={{ color: 'var(--neon-cyan)' }}>LAUNCH MISSION</strong> to initiate the RPA workflow.
+          <strong style={{ color: 'var(--pal-sky)' }}>LAUNCH MISSION</strong> to initiate the RPA workflow.
         </p>
       </div>
 
@@ -45,14 +47,14 @@ export default function Stage1Launch({ onComplete, pushMessages, disabled }) {
       {/* Task assignment display */}
       {launched && (
         <div className="card animate-slideIn" style={{ marginBottom: 24 }}>
-          <div style={{ fontFamily: 'var(--font-display)', fontSize: '0.7rem', color: 'var(--neon-purple)', letterSpacing: '0.15em', marginBottom: 12 }}>
+          <div style={{ fontFamily: 'var(--font-display)', fontSize: '0.85rem', color: 'var(--pal-sky)', letterSpacing: '0.15em', marginBottom: 12, textShadow: '0 0 10px var(--pal-sky)' }}>
             📋 TASK ASSIGNMENT LOG
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             {PLANETS.map(p => (
-              <div key={p.id} style={{ display: 'flex', gap: 12, alignItems: 'center', padding: '8px 12px', borderRadius: 6, background: 'rgba(0,245,255,0.04)', border: '1px solid rgba(0,245,255,0.1)' }}>
+              <div key={p.id} style={{ display: 'flex', gap: 12, alignItems: 'center', padding: '8px 12px', borderRadius: 6, background: 'rgba(23,104,172,0.1)', border: '1px solid rgba(6,190,225,0.2)' }}>
                 <span style={{ fontSize: '1.2rem' }}>{p.emoji}</span>
-                <span style={{ fontFamily: 'var(--font-display)', fontSize: '0.8rem', color: p.color || 'var(--neon-cyan)', flex: 1 }}>{p.name}</span>
+                <span style={{ fontFamily: 'var(--font-display)', fontSize: '0.9rem', color: p.color || 'var(--pal-sky)', flex: 1 }}>{p.name}</span>
                 <span className="badge badge-info">TASK ASSIGNED</span>
               </div>
             ))}
@@ -71,9 +73,9 @@ export default function Stage1Launch({ onComplete, pushMessages, disabled }) {
             🚀 LAUNCH MISSION
           </button>
         ) : !done ? (
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, color: 'var(--neon-cyan)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, color: 'var(--pal-sky)' }}>
             <div className="animate-spin" style={{ fontSize: '1.5rem' }}>⚙️</div>
-            <span style={{ fontFamily: 'var(--font-display)', fontSize: '0.85rem', letterSpacing: '0.1em' }}>
+            <span style={{ fontFamily: 'var(--font-display)', fontSize: '0.95rem', letterSpacing: '0.1em' }}>
               GALAXY BOT IS ASSIGNING TASKS...
             </span>
           </div>

@@ -462,8 +462,10 @@ export default function Stage2Scanner({ onComplete, pushMessages, onScore, disab
       {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: 24 }}>
         <div style={{ fontSize: '2.5rem', marginBottom: 6 }}>🔭</div>
-        <h2 className="neon-cyan" style={{ fontSize: '1.5rem', letterSpacing: '0.1em', marginBottom: 6 }}>
-          STAGE 2 — PLANET SCANNER
+        <h2 className="heading-stage heading-stage2" style={{ fontSize: 'clamp(1.5rem, 4vw, 2.2rem)' }}>
+          <span className="heading-prefix">STAGE 2</span>
+          <span className="heading-sep"> — </span>
+          <span className="heading-title">PLANET SCANNER</span>
         </h2>
         <p style={{ color: 'var(--text-secondary)', maxWidth: 580, margin: '0 auto', lineHeight: 1.6, fontSize: '0.9rem' }}>
           {phase === 'idle'
@@ -569,8 +571,8 @@ export default function Stage2Scanner({ onComplete, pushMessages, onScore, disab
           <div style={{
             flex: 1, minWidth: 260,
             background: 'rgba(0,5,20,0.95)', borderRadius: 8,
-            border: '1px solid rgba(0,245,255,0.2)',
-            padding: '12px 14px', fontFamily: 'monospace', fontSize: '0.78rem',
+            border: '1px solid rgba(6,190,225,0.25)',
+            padding: '12px 14px', fontFamily: 'var(--font-body)', fontSize: '0.85rem',
             maxHeight: 220, overflowY: 'auto',
           }}>
             <div style={{ color: 'var(--neon-cyan)', fontFamily: 'var(--font-display)', fontSize: '0.65rem', letterSpacing: '0.1em', marginBottom: 8, borderBottom: '1px solid rgba(0,245,255,0.1)', paddingBottom: 6 }}>
