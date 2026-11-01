@@ -1,0 +1,99 @@
+# ScanPlanets.robin
+# Power Automate Desktop — Galaxy Rescue Planet Scanner Flow
+# =========================================================
+# PURPOSE:
+#   Reads planet_data.xlsx and evaluates each planet against danger
+#   thresholds. Writes a JSON result file for the Flask backend.
+#
+# HOW TO IMPORT INTO POWER AUTOMATE DESKTOP:
+#   1. Open Power Automate Desktop (free with Windows 10/11)
+#   2. Click "New flow", name it "ScanPlanets"
+#   3. Click the three-dot menu → "Edit" → paste this script
+#      OR use File > Import from .robin file
+#   4. Adjust the ExcelPath variable in the SET block to your actual path
+#   5. Save and run the flow from PAD, or trigger it via the backend
+#
+# NOTE: This .robin file uses Power Automate Desktop's scripting language.
+# The Python backend (rpa_runner.py) achieves identical results without PAD.
+
+# ── Input variables ────────────────────────────────────────────────────────
+SET ExcelPath TO $'''C:\Users\andro\Desktop\RPA\backend\planet_data.xlsx'''
+SET OutputPath TO $'''%TEMP%\galaxy_scan_result.json'''
+
+# ── Danger thresholds ──────────────────────────────────────────────────────
+SET ThrOxygen TO 35
+SET ThrEnergy TO 25
+SET ThrShield TO 30
+
+# ── Step 1: Log ───────────────────────────────────────────────────────────
+DISPLAY.ShowMessageBox Title: "Galaxy Bot" Message: "Initializing planetary scan..." Icon: Display.Icon.Information Buttons: Display.Buttons.OK
+
+# ── Step 2: Open Excel workbook ───────────────────────────────────────────
+Excel.LaunchExcel Path: ExcelPath Visible: False ReadOnly: True Instance=> ExcelInstance
+
+# ── Step 3: Read PlanetDatabase sheet ────────────────────────────────────
+# Data rows start at row 4 (row1=title, row2=note, row3=headers)
+Excel.SetActiveWorksheet Instance: ExcelInstance Name: "PlanetDatabase"
+Excel.ReadFromExcel.ReadCells Instance: ExcelInstance StartColumn: "A" StartRow: 4 EndColumn: "G" EndRow: 6 ReadAsText: False FirstLineIsHeader: False CellsTable=> PlanetTable
+
+# ── Step 4: Process each planet ──────────────────────────────────────────
+SET ResultList TO []
+
+LOOP LoopIndex FROM 0 TO (PlanetTable.RowsCount - 1)
+    SET PlanetId   TO PlanetTable[LoopIndex][0]
+    SET PlanetName TO PlanetTable[LoopIndex][1]
+    SET PlanetDesc TO PlanetTable[LoopIndex][2]
+    SET OxygenVal  TO PlanetTable[LoopIndex][3]
+    SET EnergyVal  TO PlanetTable[LoopIndex][4]
+    SET ShieldVal  TO PlanetTable[LoopIndex][5]
+
+    SET DangerFlags TO []
+    SET InDanger TO False
+
+    IF OxygenVal < ThrOxygen THEN
+        Variables.AddItemToList Item: $'''O2=%OxygenVal%% critical''' List: DangerFlags
+        SET InDanger TO True
+    END
+
+    IF EnergyVal < ThrEnergy THEN
+        Variables.AddItemToList Item: $'''Energy=%EnergyVal%% critical''' List: DangerFlags
+        SET InDanger TO True
+    END
+
+    IF ShieldVal < ThrShield THEN
+        Variables.AddItemToList Item: $'''Shield=%ShieldVal%% critical''' List: DangerFlags
+        SET InDanger TO True
+    END
+
+    SET PlanetRecord TO {
+        'id': PlanetId,
+        'name': PlanetName,
+        'desc': PlanetDesc,
+        'oxygen': OxygenVal,
+        'energy': EnergyVal,
+        'shield': ShieldVal,
+        'in_danger': InDanger,
+        'danger_reasons': DangerFlags
+    }
+
+    Variables.AddItemToList Item: PlanetRecord List: ResultList
+END
+
+# ── Step 5: Close Excel ───────────────────────────────────────────────────
+Excel.CloseExcel.Close Instance: ExcelInstance
+
+# ── Step 6: Build JSON and write to output file ───────────────────────────
+# PAD's JSON handling — use Python script action as bridge if needed
+Scripting.RunPythonScript Script: $'''
+import json, sys
+result = {
+    "planets": %ResultList%,
+    "rpa_mode": "Power Automate Desktop"
+}
+with open(r"%OutputPath%", "w") as f:
+    json.dump(result, f, indent=2)
+print("JSON written to %OutputPath%")
+''' ScriptOutput=> PythonOutput
+
+# ── Step 7: Done ──────────────────────────────────────────────────────────
+DISPLAY.ShowMessageBox Title: "Galaxy Bot" Message: "Planet scan complete! Results saved." Icon: Display.Icon.Information Buttons: Display.Buttons.OK
